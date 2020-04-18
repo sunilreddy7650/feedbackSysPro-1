@@ -1,63 +1,16 @@
-<form #userForm="ngForm"   (ngSubmit)="onSave(userForm.value)" novalidate >  
-    <p>Is "myForm" valid? {{userForm.valid}}</p>  
-   <table border='1'>  
-      <tr>
-            <input name="id" type="hidden"     [(ngModel)]="id" />
-          <td>Enter the USN : </td>
-          <td>
-          <input name="usn" type="string"     [(ngModel)]="usn" />
-        </td>
-      </tr>
-<tr>  
-  <td>On a scale of 1 to 10 please rate how well is today's class</td>  
-  <td>   
-       
-       
-       <input name="points" type="number"  required  [(ngModel)]="points" />  
-    
-   </td>  
-  </tr>  
-    
-  <tr>  
-      <td>Comment min 10 words</td>  
-      <td>    <input name="description" required  type="text"   [(ngModel)]="description" /></td>  
-      </tr>  
-      <tr>  
-          <td colspan="2">  
-      <input type="submit" value="{{valbutton}}" />  
-      </td>  
-      </tr>  
-   </table>  
-  </form>   
-    
-  <table border='1'>  
-    
-    <tr>   
-      <td>USN</td> 
-      <td>points</td>  
-      <td>description</td>  
-      <td>Edit</td>  
-      <td>Delete</td>  
-    </tr>  
-    <tr *ngFor="let kk of Repdata;let ind = index">  
-         
-       
-      <td>{{kk.usn}}</td> 
-      <td>{{kk.points}}</td>  
-      <td>{{kk.description}}</td>  
-      <td><a (click)="edit(kk)" style="color:blueviolet">Edit</a></td>  
-      <td><a (click)="delete(kk._id)" style="color:blueviolet">Delete</a>  </td>  
-    </tr>  
-  </table>
-  <button (click)="[show = !show]
-  ">{{show ? 'hide' : 'show'}}</button>
-    
+ 
+   <mat-toolbar color="primary">
+       <span class="tbar">CrypticFeedback</span>
+       <button  routerLink="/res" routerLinkActive="active" mat-button >click here to view results</button>
+<button routerLink="/takeFeed" mat-button  >click here to give feedback</button>
+       <mat-icon>account_circle</mat-icon>
+    </mat-toolbar>
+    <div > 
+        <h3 style="text-align: center;color: grey" >Welcome to CrypticFeedback System</h3>
+      
+   
 
 
-  <div style="display: block" *ngIf="show" >
-    <canvas baseChart
-            [data]="pieChartData"
-            [labels]="pieChartLabels"
-            [chartType]="pieChartType"></canvas>
-  </div>
-  
+
+   <router-outlet></router-outlet>
+</div>

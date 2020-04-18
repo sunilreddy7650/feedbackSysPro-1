@@ -1,0 +1,22 @@
+
+
+.mat-row{
+    background-color: black;
+    width: 100%;
+    
+}
+.mat-cell{
+    color: whitesmoke;
+}
+.mat-header-cell{
+    background-color:grey;
+    color: whitesmoke;
+}
+.mat-footer-row, .mat-header-row, .mat-row{
+    
+    flex: 1 1 auto;
+    
+}
+table{
+    width: 100%;
+}

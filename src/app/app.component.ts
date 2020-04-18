@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators,FormsModule, } from '@angular/forms';  
 import {CommonService} from './common.service';  
    
-import {Http,Response, Headers, RequestOptions } from '@angular/http';   
+import {Http,Response, Headers, RequestOptions } from '@angular/http'; 
+import { Long } from'bson' 
+import { from } from 'rxjs';
+const BSON = require('bson');
 
   
 @Component({  
@@ -17,8 +20,9 @@ export class AppComponent {
      
   constructor(private newService :CommonService,public dataservice:CommonService) { 
 
-      this.dataservice.GetUser().subscribe(data =>{this.us = data;
-      console.log(data);
+      this.dataservice.GetUser().subscribe(data =>{this.us = JSON.parse(JSON.stringify(data));
+      
+      
       });
       
 
@@ -26,8 +30,9 @@ export class AppComponent {
    Repdata; 
    valbutton ="Save"; 
    us; 
-   chrtdata: Object[];
-   piedata: any[];
+   chrtdata;
+   piedata;
+   
    
    show: boolean = false;
                           
@@ -48,38 +53,9 @@ ngOnInit() {
     this.Repdata = data;  
      
   }) 
-   this.getdata();
-}  
-getdata()
-{
   
-}
+}  
 
 
-
-onSave = function(user,isValid: boolean) {    
-  
-  user.mode= this.valbutton;  
-  this.newService.saveUser(user)  
-  .subscribe(data =>  {  alert(data.data);  
-       
-    this.ngOnInit();    
-  }   
-  , error => this.errorMessage = error )  
-    
-}      
-edit = function(kk) {  
-  
-this.id = kk._id;
-this.usn = kk.usn;  
-this.points= kk.points;  
-this.description= kk.description;  
-this.valbutton ="Update";  
-}  
-  
-delete = function(id) {  
-this.newService.deleteUser(id)  
-.subscribe(data =>   { alert(data.data) ; this.ngOnInit();}, error => this.errorMessage = error )   
-}  
   
 }
