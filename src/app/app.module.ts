@@ -17,13 +17,18 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({  
   declarations: [  
     AppComponent, ResultComponent, TakeFeedBackComponent  
   ],  
   imports: [  
     BrowserModule,HttpModule,FormsModule,  HttpClientModule, ChartsModule,MatCardModule,MatTableModule,RouterModule,AppRoutingModule,
-    MatToolbarModule,MatButtonModule,MatIconModule,MatGridListModule,
+    MatToolbarModule,MatButtonModule,MatIconModule,MatGridListModule,MatSortModule,MatPaginatorModule,MatFormFieldModule,MatInputModule,BrowserAnimationsModule,
   ],  
   providers: [CommonService],  
   bootstrap: [AppComponent]  
