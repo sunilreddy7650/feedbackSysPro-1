@@ -1,43 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {CommonService} from '../common.service';
 import { MatTableDataSource } from '@angular/material/table';
 import {FormGroup,FormControl,Validators,FormsModule, } from '@angular/forms'; 
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSortModule, MatSort } from '@angular/material';
+  import { from } from 'rxjs';
+import { DataSource } from '@angular/cdk/table';
+
+
+ 
+const dataSource = new MatTableDataSource([]);
 
 export interface feedBackRes {
-  USN: string;
-  Points: string;
-  Description: string;  
-  Delete;
+  usn: string;
+  points: number;
+  description: string;  
+  Delete:string;
 }
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
+
 })
 export class ResultComponent implements OnInit {
-
-  displayedColumns: string[] = ['USN','Points','Description','Action'];
-  dataSource : MatTableDataSource<unknown>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  displayedColumns: string[] = ['usn','points','description','Delete'];
+  dataSource = new MatTableDataSource<feedBackRes[]>();
   arr:any[];
   ptaaray;
   Repdata;
+  ds;
   
-  constructor(public newService:CommonService) { 
+
+ 
+  
+
+  ngOnInit() {
     
+    this.newService.GetUser().subscribe(data =>{this.dataSource = new MatTableDataSource(JSON.parse(JSON.stringify(data)));
+      this.dataSource.sort = this.sort;
+    });
+      
+      
+     
+  }
+  constructor(public newService:CommonService) { 
+    this.getdata();
+      this.piedata();
+      this.newService.GetUser().subscribe(data =>  this.Repdata = data);
 
   }
+  
   show: boolean = false;
                           
   public pieChartLabels = ['p-1','p-2','p-3','p-4','p-5','p-6','p-7','p-8','p-9','p-10',];
   public pieChartData;
-  public pieChartType = 'pie';
-
-  ngOnInit() {
-    this.newService.GetUser().subscribe(data =>  this.Repdata = data)
-      this.getdata();
-      this.piedata();
-  }
+  public pieChartType = 'bar';
       
   edit = function(kk) {  
     
@@ -54,15 +74,15 @@ export class ResultComponent implements OnInit {
   } 
   piedata()
   {
-   this.newService.GetUser().subscribe(data =>{this.dataSource = new MatTableDataSource(JSON.parse(JSON.stringify(data)));
      
-   })
+   
   } 
   getdata(){
     this.newService.GetUser().subscribe(data =>{this.ptaaray = data;
      
      var  arrray = [];
      var p1=0,p2=0,p3=0,p4=0,p5=0,p6=0,p7=0,p8=0,p9=0,p10=0;
+     
      
 
       for (var i = 0 ; i < this.ptaaray.length;i++)
@@ -102,7 +122,9 @@ export class ResultComponent implements OnInit {
     });
      
    
+   
     
+
   
   
 }
