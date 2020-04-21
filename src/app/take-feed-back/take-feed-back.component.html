@@ -1,11 +1,11 @@
-<form #userForm="ngForm"   (ngSubmit)="onSave(userForm.value)" novalidate >  
+<form #userForm="ngForm"   (ngSubmit)="onSave(userForm.value)" ng-click="this.disabled:true" novalidate >  
         <p>Is "myForm" valid? {{userForm.valid}}</p>  
        <table border='1'>  
           <tr>
-                <input name="id" type="hidden"     [(ngModel)]="id" />
+                <input name="id" type="hidden"     [(ngModel)]="id"  />
               <td>Enter the USN : </td>
               <td>
-              <input name="usn" type="string"     [(ngModel)]="usn" />
+              <input name="usn" type="string"     [(ngModel)]="usn" required />
             </td>
           </tr>
     <tr>  
@@ -20,11 +20,11 @@
         
       <tr>  
           <td>Comment min 10 words</td>  
-          <td>    <input name="description" type="text" [(ngModel)]="description" required="required" /></td>  
+          <td>    <input name="description" type="text" [(ngModel)]="description" required /></td>  
           </tr>  
           <tr>  
               <td colspan="2">  
-                    <input type="submit" value="{{valbutton}}" /> 
+                    <input type="submit" [disabled]="userForm.invalid" value="{{valbutton}}"   /> 
           </td>  
           </tr>  
        </table>  

@@ -22,13 +22,17 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import { from } from 'rxjs';
 @NgModule({  
   declarations: [  
     AppComponent, ResultComponent, TakeFeedBackComponent  
   ],  
   imports: [  
     BrowserModule,HttpModule,FormsModule,  HttpClientModule, ChartsModule,MatCardModule,MatTableModule,RouterModule,AppRoutingModule,
-    MatToolbarModule,MatButtonModule,MatIconModule,MatGridListModule,MatSortModule,MatPaginatorModule,MatFormFieldModule,MatInputModule,BrowserAnimationsModule,
+    MatToolbarModule,MatButtonModule,MatIconModule,MatGridListModule,MatSortModule,MatPaginatorModule,MatFormFieldModule,MatInputModule,
+    BrowserAnimationsModule,MatSnackBarModule,MatTabsModule,
   ],  
   providers: [CommonService],  
   bootstrap: [AppComponent]  
