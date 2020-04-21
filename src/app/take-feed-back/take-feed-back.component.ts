@@ -4,6 +4,7 @@ import {FormGroup,FormControl,Validators,FormsModule, } from '@angular/forms';
 import { DataSource } from '@angular/cdk/table';
 import { MatSnackBarModule, MatSnackBar, MatSnackBarRef } from '@angular/material';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import {MatTabsModule} from '@angular/material/tabs';
 @Component({
   selector: 'app-take-feed-back',
   templateUrl: './take-feed-back.component.html',
@@ -53,11 +54,19 @@ export class TakeFeedBackComponent implements OnInit {
     }   
     , error => this.errorMessage = error )
     let snackBarRef = this.snackbar.open(this.Smessage,this.action,{ duration : 6000 }) ;
+    snackBarRef.afterDismissed().subscribe(() =>{
+      this.ngOnInit() 
+      {
+        location.reload()
+      }
+      
+    })   
     snackBarRef.onAction().subscribe(() =>{
       this.ngOnInit() 
       {
         location.reload()
       }
+      
     })   
     
    } 
@@ -65,7 +74,14 @@ export class TakeFeedBackComponent implements OnInit {
    {
      console.log('this is ecxecuting'+this.flag);
      let snackBarRef = this.snackbar.open(this.Fmessage,this.action,{ duration : 6000 }) ;
-    snackBarRef.onAction().subscribe(() =>{
+     snackBarRef.afterDismissed().subscribe(() =>{
+      this.ngOnInit() 
+      {
+        location.reload()
+      }
+      
+    })
+     snackBarRef.onAction().subscribe(() =>{
       this.ngOnInit() 
       {
         location.reload()

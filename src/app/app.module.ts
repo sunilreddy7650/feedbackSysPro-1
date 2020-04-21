@@ -22,7 +22,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 import { from } from 'rxjs';
 @NgModule({  
   declarations: [  
@@ -31,7 +32,7 @@ import { from } from 'rxjs';
   imports: [  
     BrowserModule,HttpModule,FormsModule,  HttpClientModule, ChartsModule,MatCardModule,MatTableModule,RouterModule,AppRoutingModule,
     MatToolbarModule,MatButtonModule,MatIconModule,MatGridListModule,MatSortModule,MatPaginatorModule,MatFormFieldModule,MatInputModule,
-    BrowserAnimationsModule,MatSnackBarModule
+    BrowserAnimationsModule,MatSnackBarModule,MatTabsModule,
   ],  
   providers: [CommonService],  
   bootstrap: [AppComponent]  
