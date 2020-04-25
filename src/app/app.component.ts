@@ -21,8 +21,9 @@ export class AppComponent {
   constructor(private newService :CommonService,public dataservice:CommonService) { 
 
       this.dataservice.GetUser().subscribe(data =>{this.us = JSON.parse(JSON.stringify(data));
+        
       
-      
+        
       });
       
 

@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {FormGroup,FormControl,Validators,FormsModule, } from '@angular/forms'; 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material';
-  import { from } from 'rxjs';
+import { from } from 'rxjs';
 import { DataSource } from '@angular/cdk/table';
 
 
@@ -40,7 +40,9 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
     
     this.newService.GetUser().subscribe(data =>{this.dataSource = new MatTableDataSource(JSON.parse(JSON.stringify(data)));
+
       this.dataSource.sort = this.sort;
+      
     });
       
       
@@ -114,30 +116,12 @@ export class ResultComponent implements OnInit {
         console.log(arrray);
         this.pieChartData = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10];
         console.log(this.pieChartData);
-
-        
-        
-       
-        
+ 
     });
-     
-   
-   
-    
-
-  
   
 }
      
-    //  const arrray:any[] = Array.of(this.ptaaray);
-    //  console.log(arrray);
-    //  for (var i=0;i<arrray.length;i++)
-    //  {
-       
-        
-    //  }
-     
-  
+    
   
 }
 

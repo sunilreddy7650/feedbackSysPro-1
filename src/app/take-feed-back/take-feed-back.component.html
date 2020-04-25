@@ -1,11 +1,11 @@
 <form #userForm="ngForm"   (ngSubmit)="onSave(userForm.value)" ng-click="this.disabled:true" novalidate >  
-        <p>Is "myForm" valid? {{userForm.valid}}</p>  
+        <p>give here your feed_back</p>  
        <table border='1'>  
           <tr>
                 <input name="id" type="hidden"     [(ngModel)]="id"  />
               <td>Enter the USN : </td>
               <td>
-              <input name="usn" type="string"     [(ngModel)]="usn" required />
+              <input name="usn" type="string"     [(ngModel)]="usn" required  />
             </td>
           </tr>
     <tr>  
